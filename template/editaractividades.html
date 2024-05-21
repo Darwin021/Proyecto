@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="col-md-4 offset-md-4">
+    <div class="card card-body">
+        <form action="/editarA/{{actividadE.ID_SERVICIO}},{{actividadE.ID_COLONIAS}},{{actividadE.ID_CUADRILLA}}" method="POST">
+            <div class="form-group">
+                <label for="id_servicio">id_servicio:</label>
+                <select id="id_servicio" name="id_servicio" class="form-control">
+                    <option value="1" {% if actividadE.ID_SERVICIO == 1 %} selected {% endif %}>1</option>
+                    <option value="2" {% if actividadE.ID_SERVICIO == 2 %} selected {% endif %}>2</option>
+                    <option value="3" {% if actividadE.ID_SERVICIO == 3 %} selected {% endif %}>3</option>
+                    <option value="4" {% if actividadE.ID_SERVICIO == 4 %} selected {% endif %}>4</option>
+                    <option value="5" {% if actividadE.ID_SERVICIO == 5 %} selected {% endif %}>5</option>
+                    <option value="6" {% if actividadE.ID_SERVICIO == 6 %} selected {% endif %}>6</option>
+                    <option value="7" {% if actividadE.ID_SERVICIO == 7 %} selected {% endif %}>7</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_colonia">Contamos con 1623 colonias:</label>
+                <input type="text" name="id_colonia" placeholder="id_colonia" class="form-control" value="{{ actividadE.ID_COLONIAS }}">
+            </div>
+            <div class="form-group">
+                <label for="id_cuadrilla">id_cuadrilla:</label>
+                <select id="id_cuadrilla" name="id_cuadrilla" class="form-control">
+                    <option value="1" {% if actividadE.ID_CUADRILLA == 1 %} selected {% endif %}>1</option>
+                    <option value="2" {% if actividadE.ID_CUADRILLA == 2 %} selected {% endif %}>2</option>
+                    <option value="3" {% if actividadE.ID_CUADRILLA == 3 %} selected {% endif %}>3</option>
+                    <option value="4" {% if actividadE.ID_CUADRILLA == 4 %} selected {% endif %}>4</option>
+                    <option value="5" {% if actividadE.ID_CUADRILLA == 5 %} selected {% endif %}>5</option>
+                    <option value="6" {% if actividadE.ID_CUADRILLA == 6 %} selected {% endif %}>6</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="fecha_limpieza" placeholder="Fecha-Limpieza" class="form-control" value="{{ actividadE.FECHA_LIMPIEZA }}">
+            </div>
+            <div class="form-group">
+                <input type="text" name="observaciones" placeholder="Observaciones" class="form-control" value="{{ actividadE.OBSERVACIONES }}">
+            </div>
+            <div class="form-group">
+                <label>Imagen:</label>
+                <input type="file" name="imagen" class="form-control">
+            </div>            
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-block btn-success">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+

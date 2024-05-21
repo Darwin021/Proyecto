@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="col-md-7 mx-auto text-center"> <!-- Agregamos la clase text-center para centrar el texto -->
+    <h1 font="italic">Informacion colonias de LimpiezaFlaskApp</h1> <!-- Agregamos la clase font-italic para la fuente cursiva -->
+    <table class="table table-striped table-bordered bg-white table-sm">
+        <thead>
+            <tr>
+                <th>ID_COLONIAS</th>
+                <th>CODIGO_POSTAL</th>
+                <th>ESTADO</th>
+                <th>MUNICIPIO</th>
+                <th>ASENTAMIENTO</th>
+                <th>TIPO_ASENTAMIENTO</th>
+                <th>CLAVE_OFICINA</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row.ID_COLONIAS }}</td>
+                <td>{{ row.CODIGO_POSTAL }}</td>
+                <td>{{ row.ESTADO }}</td>
+                <td>{{ row.MUNICIPIO }}</td>
+                <td>{{ row.ASENTAMIENTO }}</td>
+                <td>{{ row.TIPO_ASENTAMIENTO }}</td>
+                <td>{{ row.CLAVE_OFICINA }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

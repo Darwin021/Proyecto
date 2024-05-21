@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="card card-body">
+            <form action="/agregar-actividad" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="id_servicio">id_servicio:</label>
+                    <select id="id_servicio" name="id_servicio" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="id_colonia">Contamos con 1623 colonias:</label>
+                    <input type="text" name="id_colonia" placeholder="id_colonia" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="id_cuadrilla">id_cuadrilla:</label>
+                    <select id="id_cuadrilla" name="id_cuadrilla" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="fecha_limpieza" placeholder="Fecha-Limpieza" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="observaciones" placeholder="Observaciones" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Imagen:</label>
+                    <input type="file" name="imagen" class="form-control">
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>       
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped table-bordered bg-white table-sm">
+            <thead>
+                <tr>
+                    <th>ID_Servicio</th>
+                    <th>ID_Colonia</th>
+                    <th>ID_Cuadrilla</th>
+                    <th>Fecha-Limpieza</th>
+                    <th>Observaciones</th>
+                    <th>Imagen</th>
+                    <th>Operaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for actividad in actividades %}
+                <tr>
+                    <td>{{ actividad['ID_SERVICIO'] }}</td>
+                    <td>{{ actividad['ID_COLONIAS'] }}</td>
+                    <td>{{ actividad['ID_CUADRILLA'] }}</td>
+                    <td>{{ actividad['FECHA_LIMPIEZA'] }}</td>
+                    <td>{{ actividad['OBSERVACIONES'] }}</td>
+                    <td><img src="data:image/jpeg;base64,{{ actividad['IMAGEN_BASE64'] }}" alt="Imagen de la actividad" style="max-width: 100px;"></td>               
+                    <td>
+                        <a href="/editar-actividad/{{ actividad['ID_SERVICIO'] }}/{{ actividad['ID_COLONIAS'] }}/{{ actividad['ID_CUADRILLA'] }}" class="btn btn-secondary">Editar</a>
+                        <a href="/borrar-actividad/{{ actividad['ID_SERVICIO'] }}/{{ actividad['ID_COLONIAS'] }}/{{ actividad['ID_CUADRILLA'] }}" class="btn btn-danger btn-delete">Borrar</a>                      
+                    </td>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="col-md-7 mx-auto text-center"> <!-- Agregamos la clase text-center para centrar el texto -->
+    <h1 font="italic">Integrantes de las Cuadrillas de LimpiezaFlaskApp</h1> <!-- Agregamos la clase font-italic para la fuente cursiva -->
+    <table class="table table-striped table-bordered bg-white table-sm">
+        <thead>
+            <tr>
+                <th>Cuadrilla</th>
+                <th>Nombre del Personal</th>
+                <th>Puesto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asignacion in asignaciones %}
+            <tr>
+                <td>{{ asignacion['ID_CUADRILLA'] }}</td>
+                <td>{{ asignacion['NOMBRE_PERSONAL'] }}</td>
+                <td>{{ asignacion['PUESTO_PERSONAL'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

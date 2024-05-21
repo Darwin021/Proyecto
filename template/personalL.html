@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-5">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="card card-body">
+            <form action="/agregar-personal" method="POST">
+                <div class="form-group">
+                    <label for="id_puesto">id_puesto:</label>
+                    <select id="id_puesto" name="id_puesto" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="apellido" placeholder="Apellido" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="telefono" placeholder="Telefono" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="email" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>       
+            </form>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <table class="table table-striped table-bordered bg-white table-sm">
+            <thead>
+                <tr>
+                    <td>Id_Puesto</td>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Telefono</td>
+                    <td>Email</td>
+                    <td>Operaciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for personal in personales %}
+                <tr>
+                    <td>{{ personal['ID_PUESTO'] }}</td>
+                    <td>{{ personal['NOMBRE'] }}</td>
+                    <td>{{ personal['APELLIDO'] }}</td>
+                    <td>{{ personal['TELEFONO'] }}</td>
+                    <td>{{ personal['EMAIL'] }}</td>
+                    <td>
+                        <a href="/editar-personal/{{personal['ID_PERSONAL']}}" class="btn btn-secondary">Editar</a>
+                        <a href="/borrar-personal/{{personal['ID_PERSONAL']}}" class="btn btn-danger btn-delete">Borrar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,59 @@
+body{
+    background: #D3CCE3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* Estilos para la sección Parallax */
+.parallax-container {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Ajusta la altura según sea necesario */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5; /* Ajusta la opacidad según sea necesario */
+}
+
+.parallax img {
+    width: auto;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+/* Estilos adicionales */
+.jumbotron {
+    margin-bottom: 0;
+    padding: 100px 0; /* Ajusta el relleno superior e inferior según sea necesario */
+}
+
+.jumbotron h1, .jumbotron p {
+    color: #fff;
+}
+
+.jumbotron p {
+    font-size: 1.2rem;
+}
+
+.jumbotron .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.jumbotron .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+

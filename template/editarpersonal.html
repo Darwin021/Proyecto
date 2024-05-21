@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="col-md-4 offset-md-4">
+    <div class="card card-body">
+
+        
+    <form action="/editarP/{{personal['ID_PERSONAL']}}" method="POST">
+
+        <div class="form-group">
+            <label for="id_puesto">id_puesto:</label>
+            <select id="id_puesto" name="id_puesto" value="{{ personal['ID_PUESTO'] }}" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="nombre" placeholder="Nombre" value="{{ personal['NOMBRE'] }}" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="apellido" placeholder="Apellido" value="{{ personal['APELLIDO'] }}" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="telefono" placeholder="Telefono" value="{{ personal['TELEFONO'] }}" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="email" placeholder="Email" value="{{ personal['EMAIL'] }}" class="form-control">
+        </div>
+
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-block btn-success">Save</button>
+        </div>
+           
+    </form>
+
+    </div>
+</div>
+{% endblock %}
